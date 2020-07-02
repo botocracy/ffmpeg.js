@@ -195,8 +195,9 @@ build/ffmpeg-webm/ffmpeg.bc: $(WEBM_SHARED_DEPS)
 		$(addprefix --enable-muxer=,$(WEBM_MUXERS)) \
 		--enable-libopus \
 		--enable-libvpx \
-		--extra-cflags="-s USE_ZLIB=1 -I../libvpx/dist/include" \
-		--extra-ldflags="-L../libvpx/dist/lib" \
+		--extra-cflags="\"-s USE_ZLIB=1 -I`pwd`/../libvpx/dist/include\"" \
+		--extra-cxxflags="\"-s USE_ZLIB=1 -I`pwd`/../libvpx/dist/include\"" \
+		--extra-ldflags="\"-L`pwd`/../libvpx/dist/lib\"" \
 		&& \
 	emmake make -j && \
 	cp ffmpeg ffmpeg.bc
